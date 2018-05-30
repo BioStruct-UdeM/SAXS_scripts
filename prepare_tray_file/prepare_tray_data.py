@@ -26,7 +26,7 @@ def parse_csv(args):
 
     csv_data_in = []
     with open(args['input'], 'r') as csvfile_in:
-        csv_data = csv.reader(csvfile_in, delimiter = ',')
+        csv_data = csv.reader(csvfile_in, delimiter = ',', )
         for row in csv_data:
             csv_data_in.append(row)
 
@@ -36,7 +36,12 @@ def save_csv(args, csv_data_in):
 
     with open(args['output'], 'w') as csvfile_out:
         csv_data_out = csv.writer(csvfile_out, delimiter = ',')
+
         for row in csv_data_in[1:]:
+            if row[3].upper() == 'TRUE':
+                row[3] = 1
+            else:
+                row[3] = 0
             csv_data_out.writerow(row)
 
     return(csv_data_out)
@@ -46,14 +51,11 @@ def main():
     args = parse_arguments()
 
     csv_data_in = parse_csv(args)
-
     print('Reading the file "{}" and stripping the header line.\n'.format(args['input']))
 
     csv_data_out = save_csv(args, csv_data_in)
-
     print('Writing the file "{}" with the appropriate format for the SAXS system.\n'.format(args['output']))
-
     print('Done.\n')
-    
+
 if __name__ == '__main__':
     main()

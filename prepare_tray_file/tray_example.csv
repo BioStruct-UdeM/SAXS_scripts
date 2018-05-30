@@ -1,3 +1,3 @@
 Well,Name,Concentration,IsBuffer
-A1,buffer,0.0,TRUE
-A2,lysozyme,4.0,FALSE
+A1,buffer,0.0,True
+A2,lysozyme,4.0,False
