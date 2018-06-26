@@ -1,0 +1,3 @@
+[submodule "sendmail"]
+	path = sendmail
+	url = git@github.com:normcyr/sendmail.git
